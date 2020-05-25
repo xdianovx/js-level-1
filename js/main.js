@@ -1,109 +1,116 @@
-'use strict';
+"use strict";
 
-let a = 1, b = 1, c, d;
-
-c = ++a;
-
-console.log(c); // Ответ 2, так как префиксный икремент прибавляет 1 до того как значение запишется в переменную с
-
-d = b++;
-console.log(d); // Ответ 1, так как стоит посфиксный инкремент. Сначала в переменную запишется значение переменной d, а потом только прибавляется 1
-
-c = 2 + ++a;
-console.log(c); // Ответ 5. А теперь содержит 2, к которому прибавляется 1 префиксным инкрементом = 3, 2 + 3 = 5
-
-d = 2 + b++;
-
-console.log(d); // Ответ 4. В b лежит 2, постфиксный инкремент не добавит 1, потому 2 + 2 = 4
-
-// a = 3 После всех предыдущих операций
-// b = 3 Так же
-
-//Задача 2
-
-let a1 = 2;
-let x = 1 + (a1 *= 2)
-
-// Сначала выполняется выражение внутри скобках, так как скобки имеют высший приоритет, сначала значение a1 умножается на 2 и перезаписывает ее первоначальное значение на 4. Поэтому a1 = 4. Затем к a1 прибавляется 1 = 5, 5 записываем в x. x = 5
-console.log(x); // 5
-console.log(a1); // 4
-
-
-//Задача 3
-
-let a2 = 3;
-let b2 = 5;
-
-if (a2 > 0 && b2 > 0) {
-    let sub = a2 - b2;
-    console.log(sub);
-} else if (a2 < 0 && b2 < 0) {
-    let mul = a2 * b2;
-    console.log(mul);
-} else if (a2 * b2 < 0) {
-    let sum = a2 + b2;
-    console.log(sum);
-}
-
-
-// Задача 4
-
-function sum(a, b) {
-    return a + b;
-}
-
-function sub(a, b) {
-    return a - b;
-}
-
-function div(a, b) {
-    return a / b;
-}
-
-function mul(a, b) {
-    return a * b;
-}
-
-console.log(mul(5, 5));
-console.log(div(4, 2));
-console.log(sum(4, 3));
-console.log(sub(12, 50));
-
-
-// Задача 5
-
-function mathOperation(arg1, arg2, operation) {
-
-    switch (operation) {
-        case mul:
-            return arg1 * arg2;
-            break;
-
-        case div:
-            return arg1 / arg2;
-            break;
-
-        case sum:
-            return arg1 + arg2;
-            break;
-
-        case sub:
-            return arg1 - arg2;
-            break;
+// Задание 2
+for (let i = 0; i <= 10; i++) {
+    if (i == 0) {
+        console.log(i + " – это ноль ");
+    } else if ((i % 2) == 0) {
+        console.log(i + " – четное число ");
+    } else {
+        console.log(i + " – не четное число ");
     }
 }
 
-console.log(mathOperation(2, 3, mul));;
+// Задание 3
 
-//Задание 6
+const post = {
+    author: "John", //вывести этот текст
+    postId: 23,
+    comments: [
+        {
+            userId: 10,
+            userName: "Alex",
+            text: "lorem ipsum",
+            rating: {
+                likes: 10,
+                dislikes: 2 //вывести это число
+            }
+        },
+        {
+            userId: 5, //вывести это число
+            userName: "Jane",
+            text: "lorem ipsum 2", //вывести этот текст
+            rating: {
+                likes: 3,
+                dislikes: 1
+            }
+        },
+    ]
+};
 
-const income = Number(prompt('Введите сумму, которую хотите вложить'));
+console.log(post.author);
+console.log(post.comments[0].rating.dislikes);
+console.log(post.comments[1].userId);
+console.log(post.comments[1].text);
 
-if (income === 101) {
-    alert("Ваша сумма в 101 рубль успешно зачислена");
-} else if (income === 10020) {
-    alert("Ваша сумма в 10020 рублей успешно зачислена.");
-} else if (income === 120104) {
-    alert("Ваша сумма в 120104 рубля успешно зачислена.");
+// Задание 4
+
+const products = [
+    {
+        id: 3,
+        price: 200,
+    },
+    {
+        id: 4,
+        price: 900,
+    },
+    {
+        id: 1,
+        price: 1000,
+    },
+];
+
+products.forEach(item => {
+    let discount = 15;
+    let result = item.price / 100 * discount;
+    let priceWithDiscount = item.price - result
+    console.log(item.price);
+    console.log(priceWithDiscount);
+});
+
+//Задание 5
+const products2 = [
+    {
+        id: 3,
+        price: 127,
+        photos: [
+            "1.jpg",
+            "2.jpg",
+        ]
+    },
+    {
+        id: 5,
+        price: 499,
+        photos: []
+    },
+    {
+        id: 10,
+        price: 26,
+        photos: ["3.jpg"]
+    },
+    {
+        id: 8,
+        price: 78,
+    },
+];
+
+const productsWithPhotos = products2.filter(item => "photos" in item && item.photos.length > 0);
+
+console.log(productsWithPhotos);
+
+const sorted = products2.sort((item1, item2) => {
+   return item1.price - item2.price;
+});
+
+console.log(sorted);
+
+// Задание 6
+
+for(let i = 0; i < 10; console.log(i++)) {
 }
-// Не успел
+
+// Задание 7
+
+for(let x = 'x'; x.length < 21; x += 'x') {
+    console.log(x);
+}
